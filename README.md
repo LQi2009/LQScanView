@@ -1,3 +1,5 @@
+###根据此OC版本,改写了一个Swift版本的[LZScanner_swift](https://github.com/LQQZYY/LZScanner_swift),欢迎star
+
 #简介
 
 二维码的功能经常使用,这里主要整理了是与二维码相关的一些操作
