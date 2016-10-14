@@ -14,3 +14,6 @@
 - LZScanConfigFiles :此文件定义了demo中所使用d到的一些资源名称,例如:图片名称,文字提示等;
 - UIImageView+LongPress : 这个是为UIImageView扩展的类目,添加了一个方法,主要是实现图片长按识别其中二维码的功能,其中的识别功能依赖于LZScanner
 
+其他的详细内容及用法,可以参看demo,里面都有详细的注释;
+###如有问题,欢迎留言
+
