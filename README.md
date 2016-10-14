@@ -15,7 +15,9 @@
 - LZScanViewController: 此类是管理以上两个工具的使用,实现二维码扫描的界面及功能;
 - LZScanConfigFiles :此文件定义了demo中所使用d到的一些资源名称,例如:图片名称,文字提示等;
 - UIImageView+LongPress : 这个是为UIImageView扩展的类目,添加了一个方法,主要是实现图片长按识别其中二维码的功能,其中的识别功能依赖于LZScanner
+- libqrencode : 这个是一个生成二维码的第三方类库,其中主要用了QRCodeGenerator这个类的方法,看其.h文件里d声明的方法即可明白;
 
 其他的详细内容及用法,可以参看demo,里面都有详细的注释;
 ###如有问题,欢迎留言
+###如果对你有帮助,请右上角star支持
 
