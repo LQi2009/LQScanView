@@ -1,8 +1,12 @@
-###根据此OC版本,改写了一个Swift版本的[LZScanner_swift](https://github.com/LQQZYY/LZScanner_swift),欢迎star
+### 根据此OC版本,改写了一个Swift版本的[LZScanner_swift](https://github.com/LQQZYY/LZScanner_swift),欢迎star
 
-#简介
+# 简介
+主要文件有以下两个:
+LQScanView: 封装了二维码扫描视图/动画和扫描识别二维码内容功能;
+LQRCoder: 封装了生成二维码/条形码, 识别图片中二维码内容, 保存生成的二维码等功能;
+两个文件之间相互独立, 可根据需要分开使用;
 
-二维码的功能经常使用,这里主要整理了是与二维码相关的一些操作
+LQScanViewController: 该类是基于上面两个文件实现的一个扫描页面, 包含扫描二维码内容, 选择相册二维码图片进行识别, 识别周围光线敏感度等功能; 可以直接使用, 也可以根据该示例, 根据需要布局自己的控制器视图;
 
 ##功能
 - 二维码扫描
