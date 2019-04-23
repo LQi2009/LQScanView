@@ -267,12 +267,12 @@ NSString *t = self.textField.text;
 ```
 ## 效果图
 
-正常扫描
-![](https://github.com/LQi2009/LQScanView/blob/master/scanTest.jpeg)
 
-光线较暗的情况
+![正常扫描](https://github.com/LQi2009/LQScanView/blob/master/scanTest.jpeg)
 
-![](https://github.com/LQi2009/LQScanView/blob/master/scanTest1.jpeg)
+
+
+![光线较暗的情况](https://github.com/LQi2009/LQScanView/blob/master/scanTest1.jpeg)
 
 ### 如有问题,欢迎留言
 ### 如果对你有帮助,请右上角star支持
