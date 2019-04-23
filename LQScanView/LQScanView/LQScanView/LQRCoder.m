@@ -33,11 +33,62 @@ BOOL LQCIImageSavedJPEGToURL(NSURL *_Nullable url, CIImage * _Nonnull image) {
     return su;
 }
 
-NSData * _Nullable LQJPEGDataOfCIImage(CIImage * _Nonnull image) {
+BOOL LQImageSavedJPEGToURL(NSURL * _Nullable url, UIImage * _Nonnull image){
+    
+    CIContext *ctx = [CIContext contextWithOptions:nil];
+    
+    if (!url) {
+        
+        CIImage *ciimage = image.CIImage;
+        UIImage *savedImage = nil;
+        if (ciimage) {
+            NSData *data = [ctx JPEGRepresentationOfImage:ciimage colorSpace:[ciimage colorSpace] options:@{}];
+            savedImage = [UIImage imageWithData:data];
+        } else {
+            savedImage = image;
+        }
+        
+        if (savedImage == nil) {
+            return NO;
+        }
+        UIImageWriteToSavedPhotosAlbum(savedImage, nil, nil, nil);
+        return YES;
+    }
+    
+    CIImage *ciimage = image.CIImage;
+    if (ciimage) {
+        NSError *error;
+        BOOL su = [ctx writeJPEGRepresentationOfImage:ciimage toURL:url colorSpace:[ciimage colorSpace] options:@{} error:&error];
+        if (su == NO) {
+            NSLog(@"%@", error.description);
+        }
+        return su;
+    }
+    
+    NSData *data = UIImageJPEGRepresentation(image, 1.0);
+    BOOL rs = [data writeToURL:url atomically:YES];
+    return rs;
+}
+
+NSData * _Nullable LQJPEGDataFromCIImage(CIImage * _Nonnull image) {
     
     CIContext *ctx = [CIContext contextWithOptions:nil];
     
     NSData *data = [ctx JPEGRepresentationOfImage:image colorSpace:[image colorSpace] options:@{}];
+    return data;
+}
+
+NSData * _Nullable LQJPEGDataFromUIImage(UIImage * _Nonnull image) {
+    
+    CIImage *ciimage = image.CIImage;
+    if (ciimage) {
+        CIContext *ctx = [CIContext contextWithOptions:nil];
+        
+        NSData *data = [ctx JPEGRepresentationOfImage:ciimage colorSpace:[ciimage colorSpace] options:@{}];
+        return data;
+    }
+    
+    NSData *data = UIImageJPEGRepresentation(image, 1.0);
     return data;
 }
 

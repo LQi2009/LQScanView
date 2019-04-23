@@ -17,6 +17,7 @@
  @return 是否保存成功
  */
 UIKIT_EXTERN BOOL LQCIImageSavedJPEGToURL(NSURL * _Nullable url, CIImage * _Nonnull image);
+UIKIT_EXTERN BOOL LQImageSavedJPEGToURL(NSURL * _Nullable url, UIImage * _Nonnull image);
 
 /**
  将生成的CIImage 转换为JPEG的NSData
@@ -24,7 +25,8 @@ UIKIT_EXTERN BOOL LQCIImageSavedJPEGToURL(NSURL * _Nullable url, CIImage * _Nonn
  @param image CIImage
  @return NSData
  */
-UIKIT_EXTERN NSData * _Nullable LQJPEGDataOfCIImage(CIImage * _Nonnull image) ;
+UIKIT_EXTERN NSData * _Nullable LQJPEGDataFromCIImage(CIImage * _Nonnull image) ;
+UIKIT_EXTERN NSData * _Nullable LQJPEGDataFromUIImage(UIImage * _Nonnull image) ;
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -9,9 +9,6 @@
 #import "LQScanView.h"
 #import <AVFoundation/AVFoundation.h>
 
-
-
-
 @interface LQScanView ()<AVCaptureMetadataOutputObjectsDelegate, AVCaptureVideoDataOutputSampleBufferDelegate> {
     
     NSInteger __scanCount;
@@ -73,7 +70,6 @@
 
 - (void) stopScanning {
     
-    [self stopAnimate];
     if (self.session.isRunning) {
         [self.session stopRunning];
     }
@@ -99,7 +95,9 @@
 }
 
 - (void) stopAnimate {
-    
+    if (__isAnimating == NO) {
+        return;
+    }
     __isAnimating = NO;
     [self.scanLine.layer removeAllAnimations];
     self.scanLine.hidden = YES;
@@ -433,9 +431,9 @@
     __scanCount = 0;
     [self stopScanning];
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(scanView:didScanned:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(scanViewScanFailed:)]) {
 
-        [self.delegate scanView:self didScanned:result];
+        [self.delegate scanViewScanFailed:self];
     }
 }
 

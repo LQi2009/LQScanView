@@ -174,12 +174,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    self.scanView.scanframeType = LQScanframeTypeOn;
-//    self.scanView.warnTextAlignment = LQWarnTextAlignmentTop;
-//    self.scanView.scanframeName = @"QR";
-//    self.scanView.scanArea = CGRectMake(10, 100, 100, 100);
-//    self.scanView.lightDetectionEnable = YES;
-    
     __currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
     if (__currentOrientation != UIInterfaceOrientationPortrait) {
         [self rotateScreen:UIInterfaceOrientationPortrait];

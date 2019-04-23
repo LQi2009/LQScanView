@@ -33,6 +33,7 @@
 - (void)scanView:(LQScanView *_Nonnull)scan
     lightChanged:(CGFloat)value;
 - (void)scanViewCamaraDisable:(LQScanView *_Nonnull)scan;
+- (void)scanViewScanFailed:(LQScanView *_Nonnull)scan ;
 @end
 
 typedef enum : NSUInteger {
@@ -77,6 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  最大识别次数, 当识别次数达到该值,仍未识别出结果时停止扫描
+ 通过 scanViewScanFailed: 回调
  默认为 0,不限制
  */
 @property (nonatomic, assign) IBInspectable NSUInteger maxScanCount ;
@@ -88,6 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  扫描区域, 默认屏幕宽*0.7, 最大300, 居中
+ 当为 CGRectZero 的时候, 全屏扫描
  */
 @property (nonatomic) IBInspectable CGRect scanArea ;
 
