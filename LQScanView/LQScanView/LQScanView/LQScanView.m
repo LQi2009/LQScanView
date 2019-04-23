@@ -83,8 +83,8 @@
     self.scanLine.hidden = NO;
     
     CABasicAnimation *animationMove = [CABasicAnimation animationWithKeyPath:@"transform.translation.y"];
-    [animationMove setFromValue:[NSNumber numberWithFloat:0]];
-    [animationMove setToValue:[NSNumber numberWithFloat:CGRectGetHeight(self.scanArea) - 4]];
+    [animationMove setFromValue:[NSNumber numberWithFloat:4]];
+    [animationMove setToValue:[NSNumber numberWithFloat:CGRectGetHeight(self.scanArea) - 8]];
     animationMove.duration = 2;
     animationMove.repeatCount  = MAXFLOAT;
     animationMove.fillMode = kCAFillModeForwards;
