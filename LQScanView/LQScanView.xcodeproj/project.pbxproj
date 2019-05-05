@@ -15,6 +15,7 @@
 		D264F23F22696A1A00C44C49 /* light_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D264F23B22696A1900C44C49 /* light_close@3x.png */; };
 		D264F24022696A1A00C44C49 /* light_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D264F23C22696A1A00C44C49 /* light_open@2x.png */; };
 		D264F24122696A1A00C44C49 /* light_open@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D264F23D22696A1A00C44C49 /* light_open@3x.png */; };
+		D27342FD2276D418008E0B96 /* LQCamara.m in Sources */ = {isa = PBXBuildFile; fileRef = D27342FC2276D418008E0B96 /* LQCamara.m */; };
 		D2BA679522643AA30066409C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA679422643AA30066409C /* AppDelegate.m */; };
 		D2BA679822643AA30066409C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA679722643AA30066409C /* ViewController.m */; };
 		D2BA679B22643AA30066409C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2BA679922643AA30066409C /* Main.storyboard */; };
@@ -23,7 +24,7 @@
 		D2BA67A322643AA30066409C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA67A222643AA30066409C /* main.m */; };
 		D2BA67AD22643AA40066409C /* LQScanViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA67AC22643AA40066409C /* LQScanViewTests.m */; };
 		D2BA67B822643AA40066409C /* LQScanViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA67B722643AA40066409C /* LQScanViewUITests.m */; };
-		D2BA67C822643CAF0066409C /* LQScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA67C722643CAF0066409C /* LQScanView.m */; };
+		D2BA67C822643CAF0066409C /* LQRScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA67C722643CAF0066409C /* LQRScanView.m */; };
 		D2BA67CA2264614C0066409C /* reader_scan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BA67C92264614C0066409C /* reader_scan@3x.png */; };
 		D2BA67CC22646E7B0066409C /* reader_scan_scanline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BA67CB22646E7B0066409C /* reader_scan_scanline.png */; };
 		D2BA67D3226579B70066409C /* reader_scan_scanCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BA67D2226579B70066409C /* reader_scan_scanCamera@2x.png */; };
@@ -58,6 +59,8 @@
 		D264F23B22696A1900C44C49 /* light_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light_close@3x.png"; sourceTree = "<group>"; };
 		D264F23C22696A1A00C44C49 /* light_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light_open@2x.png"; sourceTree = "<group>"; };
 		D264F23D22696A1A00C44C49 /* light_open@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light_open@3x.png"; sourceTree = "<group>"; };
+		D27342FB2276D418008E0B96 /* LQCamara.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQCamara.h; sourceTree = "<group>"; };
+		D27342FC2276D418008E0B96 /* LQCamara.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQCamara.m; sourceTree = "<group>"; };
 		D2BA679022643AA30066409C /* LQScanView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LQScanView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BA679322643AA30066409C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D2BA679422643AA30066409C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -74,8 +77,8 @@
 		D2BA67B322643AA40066409C /* LQScanViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LQScanViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BA67B722643AA40066409C /* LQScanViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQScanViewUITests.m; sourceTree = "<group>"; };
 		D2BA67B922643AA40066409C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2BA67C622643CAF0066409C /* LQScanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQScanView.h; sourceTree = "<group>"; };
-		D2BA67C722643CAF0066409C /* LQScanView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQScanView.m; sourceTree = "<group>"; };
+		D2BA67C622643CAF0066409C /* LQRScanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQRScanView.h; sourceTree = "<group>"; };
+		D2BA67C722643CAF0066409C /* LQRScanView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQRScanView.m; sourceTree = "<group>"; };
 		D2BA67C92264614C0066409C /* reader_scan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_scan@3x.png"; sourceTree = "<group>"; };
 		D2BA67CB22646E7B0066409C /* reader_scan_scanline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reader_scan_scanline.png; sourceTree = "<group>"; };
 		D2BA67D2226579B70066409C /* reader_scan_scanCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_scan_scanCamera@2x.png"; sourceTree = "<group>"; };
@@ -108,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D27342FA2276D3FB008E0B96 /* LQCamara */ = {
+			isa = PBXGroup;
+			children = (
+				D27342FB2276D418008E0B96 /* LQCamara.h */,
+				D27342FC2276D418008E0B96 /* LQCamara.m */,
+			);
+			path = LQCamara;
+			sourceTree = "<group>";
+		};
 		D2BA678722643AA30066409C = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +152,7 @@
 				D2BA67D2226579B70066409C /* reader_scan_scanCamera@2x.png */,
 				D2BA67C92264614C0066409C /* reader_scan@3x.png */,
 				D2BA67CB22646E7B0066409C /* reader_scan_scanline.png */,
+				D27342FA2276D3FB008E0B96 /* LQCamara */,
 				D2BA67C522643C8D0066409C /* LQScanView */,
 				D2BA679322643AA30066409C /* AppDelegate.h */,
 				D2BA679422643AA30066409C /* AppDelegate.m */,
@@ -179,8 +192,8 @@
 		D2BA67C522643C8D0066409C /* LQScanView */ = {
 			isa = PBXGroup;
 			children = (
-				D2BA67C622643CAF0066409C /* LQScanView.h */,
-				D2BA67C722643CAF0066409C /* LQScanView.m */,
+				D2BA67C622643CAF0066409C /* LQRScanView.h */,
+				D2BA67C722643CAF0066409C /* LQRScanView.m */,
 				D264F23322687C6900C44C49 /* LQRCoder.h */,
 				D264F23422687C6900C44C49 /* LQRCoder.m */,
 			);
@@ -326,13 +339,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2BA67C822643CAF0066409C /* LQScanView.m in Sources */,
+				D2BA67C822643CAF0066409C /* LQRScanView.m in Sources */,
 				D2BA679822643AA30066409C /* ViewController.m in Sources */,
 				D264F2302267234500C44C49 /* UIImageView+LongPress.m in Sources */,
 				D2BA67A322643AA30066409C /* main.m in Sources */,
 				D2BA67D62265BE960066409C /* LQScanViewController.m in Sources */,
 				D2BA679522643AA30066409C /* AppDelegate.m in Sources */,
 				D264F23522687C6900C44C49 /* LQRCoder.m in Sources */,
+				D27342FD2276D418008E0B96 /* LQCamara.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,13 +518,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A7Z8D56N52;
+				DEVELOPMENT_TEAM = M5AQP3WXJE;
 				INFOPLIST_FILE = LQScanView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.q.ice.LQScanView;
+				PRODUCT_BUNDLE_IDENTIFIER = .com.q.ice.LQScanView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -521,13 +536,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A7Z8D56N52;
+				DEVELOPMENT_TEAM = M5AQP3WXJE;
 				INFOPLIST_FILE = LQScanView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.q.ice.LQScanView;
+				PRODUCT_BUNDLE_IDENTIFIER = .com.q.ice.LQScanView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

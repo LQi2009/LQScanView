@@ -7,16 +7,16 @@
 //
 
 #import "LQScanViewController.h"
-#import "LQScanView.h"
+#import "LQRScanView.h"
 #import "LQRCoder.h"
 
-@interface LQScanViewController ()<LQScanViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+@interface LQScanViewController ()<LQRScanViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     
     BOOL __isNavigationBarHidden;
     UIInterfaceOrientation __currentOrientation;
 }
 
-@property (strong, nonatomic) LQScanView *scanView;
+@property (strong, nonatomic) LQRScanView *scanView;
 @property (nonatomic, strong) UIButton * backButton ;
 @property (nonatomic, strong) UIButton * photoButton ;
 @property (nonatomic, strong) UIButton * lightButton ;
@@ -58,12 +58,13 @@
     
 }
 
-- (LQScanView *)scanView {
+- (LQRScanView *)scanView {
     if (_scanView == nil) {
-        _scanView = [[LQScanView alloc]initWithFrame:self.view.bounds];
+        _scanView = [[LQRScanView alloc]initWithFrame:self.view.bounds];
         _scanView.delegate = self;
         _scanView.lightDetectionEnable = YES;
-        _scanView.scanArea = CGRectZero;
+        _scanView.scanArea = CGRectMake(30, 110, 200, 200);
+//        _scanView.scanArea = CGRectZero;
         [self.view addSubview:_scanView];
     }
     
@@ -101,7 +102,7 @@
     
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     picker.delegate = self;
-    [self presentViewController:picker animated:YES completion:nil];
+    [self presentViewController:picker animated:NO completion:nil];
     [self.scanView stopScanning];
 }
 
@@ -147,7 +148,7 @@
 
 - (void) lightButtonAction:(UIButton *) button {
     button.selected = !button.selected;
-    [LQScanView turnTorch:button.selected];
+    [LQRScanView turnTorch:button.selected];
 }
 
 - (UIButton *)backButton {
@@ -163,6 +164,10 @@
 
 - (void) backButtonAction {
     [self.scanView stopScanning];
+    if (self.lightButton.selected == YES) {
+        [self lightButtonAction:self.lightButton];
+    }
+    
     if (self.navigationController) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
@@ -174,10 +179,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    __currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
-    if (__currentOrientation != UIInterfaceOrientationPortrait) {
-        [self rotateScreen:UIInterfaceOrientationPortrait];
-    }
+//    __currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
+//    if (__currentOrientation != UIInterfaceOrientationPortrait) {
+//        [self rotateScreen:UIInterfaceOrientationPortrait];
+//    }
 
 }
 
@@ -185,15 +190,15 @@
     [super viewDidLayoutSubviews];
     
     self.scanView.frame = self.view.bounds;
-    self.backButton.frame = CGRectMake(self.view.safeAreaInsets.left + 10, self.view.safeAreaInsets.top + 10, 30, 30);
+    self.backButton.frame = CGRectMake(self.view.safeAreaInsets.left + 10, self.view.safeAreaInsets.top + 10, 40, 40);
     self.titleLabel.bounds = CGRectMake(0, 0, 100, 30);
     self.titleLabel.center = CGPointMake(self.view.center.x, self.view.safeAreaInsets.top + 25);
-    self.photoButton.frame = CGRectMake(CGRectGetWidth(self.view.frame) - self.view.safeAreaInsets.right - 40, self.view.safeAreaInsets.top + 10, 30, 30);
+    self.photoButton.frame = CGRectMake(CGRectGetWidth(self.view.frame) - self.view.safeAreaInsets.right - 50, self.view.safeAreaInsets.top + 10, 40, 40);
     self.lightButton.bounds = CGRectMake(0, 0, 100, 100);
     self.lightButton.center = self.view.center;
 }
 
-- (void)scanView:(LQScanView *)scan didScanned:(NSString *)info {
+- (void)scanView:(LQRScanView *)scan didScanned:(NSString *)info {
     
     [self backButtonAction];
     if (self.completeHandler) {
@@ -201,7 +206,7 @@
     }
 }
 
-- (void)scanView:(LQScanView *)scan lightChanged:(CGFloat)value {
+- (void)scanView:(LQRScanView *)scan lightChanged:(CGFloat)value {
 //    NSLog(@"%f", value);
     BOOL isShow = value > -1 ? NO: YES;
     [self showLightbutton:isShow];

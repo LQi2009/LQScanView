@@ -7,15 +7,12 @@
 //
 
 #import "ViewController.h"
-#import "LQScanView.h"
 #import "LQRCoder.h"
 #import "UIImageView+LongPress.h"
 #import "LQScanViewController.h"
 
-@interface ViewController () {
-    
-    LQScanView *__scanView ;
-}
+@interface ViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *label;

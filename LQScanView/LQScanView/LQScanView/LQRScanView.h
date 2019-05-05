@@ -11,8 +11,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class LQScanView;
-@protocol LQScanViewDelegate <NSObject>
+@class LQRScanView;
+@protocol LQRScanViewDelegate <NSObject>
 
 /**
  扫描成功的回调
@@ -20,7 +20,7 @@
  @param scan 当前视图
  @param info 扫描信息
  */
-- (void)scanView:(LQScanView *_Nonnull)scan
+- (void)scanView:(LQRScanView *_Nonnull)scan
       didScanned:(NSString *_Nullable)info;
 @optional
 
@@ -30,28 +30,28 @@
  @param scan 当前视图
  @param value 光线值, 值越大,光线越充足
  */
-- (void)scanView:(LQScanView *_Nonnull)scan
+- (void)scanView:(LQRScanView *_Nonnull)scan
     lightChanged:(CGFloat)value;
-- (void)scanViewCamaraDisable:(LQScanView *_Nonnull)scan;
-- (void)scanViewScanFailed:(LQScanView *_Nonnull)scan ;
+- (void)scanViewCamaraDisable:(LQRScanView *_Nonnull)scan;
+- (void)scanViewScanFailed:(LQRScanView *_Nonnull)scan ;
 @end
 
 typedef enum : NSUInteger {
-    LQWarnTextAlignmentBottom,
-    LQWarnTextAlignmentTop,
-    LQWarnTextAlignmentCenter,
-} LQWarnTextAlignment;
+    LQRWarnTextAlignmentBottom,
+    LQRWarnTextAlignmentTop,
+    LQRWarnTextAlignmentCenter,
+} LQRWarnTextAlignment;
 
 typedef enum : NSUInteger {
     
-    LQScanframeTypeIn,
-    LQScanframeTypeOut,
-    LQScanframeTypeOn,
-} LQScanframeType;
+    LQRScanframeTypeIn,
+    LQRScanframeTypeOut,
+    LQRScanframeTypeOn,
+} LQRScanframeType;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LQScanView : UIView
+@interface LQRScanView : UIView
 
 /**
  是否检测当前环境光线强度, 通过代理 'scanView:lightChanged:' 反馈
@@ -86,7 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  代理
  */
-@property (nonatomic, assign) IBOutlet id <LQScanViewDelegate> delegate;
+@property (nonatomic, assign) IBOutlet id <LQRScanViewDelegate> delegate;
 
 /**
  扫描区域, 默认屏幕宽*0.7, 最大300, 居中
@@ -97,12 +97,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  提示文字的位置
  */
-@property (nonatomic, assign) LQWarnTextAlignment warnTextAlignment ;
+@property (nonatomic, assign) LQRWarnTextAlignment warnTextAlignment ;
 
 /**
  扫描框的位置
  */
-@property (nonatomic, assign) LQScanframeType scanframeType ;
+@property (nonatomic, assign) LQRScanframeType scanframeType ;
 
 /**
  开始扫描
