@@ -265,9 +265,15 @@ NSString *t = self.textField.text;
         self.imageView.image = image;
     }];
 ```
+## 效果图
+
+
+![正常扫描](https://github.com/LQi2009/LQScanView/blob/master/scanTest.jpeg)
 
 
 
-###如有问题,欢迎留言
-###如果对你有帮助,请右上角star支持
+![光线较暗的情况](https://github.com/LQi2009/LQScanView/blob/master/scanTest1.jpeg)
+
+### 如有问题,欢迎留言
+### 如果对你有帮助,请右上角star支持
 
