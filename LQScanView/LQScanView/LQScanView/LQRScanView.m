@@ -8,7 +8,7 @@
 
 #import "LQRScanView.h"
 #import <AVFoundation/AVFoundation.h>
-#import <Vision/Vision.h>
+//#import <Vision/Vision.h>
 
 BOOL isiPad() {
     NSString *model = [UIDevice currentDevice].model;
@@ -36,18 +36,18 @@ BOOL isiPad() {
 @property (nonatomic, strong) UIImageView * scanImageView ;
 @property (nonatomic, strong) UIActivityIndicatorView * activity ;
 @property (nonatomic, strong) AVCaptureSession *session;
-@property (nonatomic, strong) VNSequenceRequestHandler * reqHandler ;
+//@property (nonatomic, strong) VNSequenceRequestHandler * reqHandler ;
 @end
 
 @implementation LQRScanView
-- (VNSequenceRequestHandler *)reqHandler {
-    if (_reqHandler == nil) {
-        _reqHandler = [[VNSequenceRequestHandler alloc]init];
-        
-    }
-    
-    return _reqHandler;
-}
+//- (VNSequenceRequestHandler *)reqHandler {
+//    if (_reqHandler == nil) {
+//        _reqHandler = [[VNSequenceRequestHandler alloc]init];
+//
+//    }
+//
+//    return _reqHandler;
+//}
 - (void)dealloc {
     
     [self stopScanning];
@@ -80,6 +80,7 @@ BOOL isiPad() {
         if (self.session.isRunning == NO) {
             NSLog(@"startRunning");
             [self.session startRunning];
+            NSLog(@"**************************\n %@ \n **********************",NSStringFromCGRect([self->__previewLayer metadataOutputRectOfInterestForRect:self.scanArea]));
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -302,25 +303,51 @@ BOOL isiPad() {
         NSLog(@"unlockForConfiguration");
     }
     
-    //创建输出流
-    AVCaptureMetadataOutput * output = [[AVCaptureMetadataOutput alloc]init];
-    __captureOutput = output;
-    
     self.session = [[AVCaptureSession alloc]init];
-    [self.session setSessionPreset:AVCaptureSessionPresetHigh];
-//    [self.session setSessionPreset:AVCaptureSessionPresetPhoto];
+//    [self.session setSessionPreset:AVCaptureSessionPresetHigh];
+        [self.session setSessionPreset:AVCaptureSessionPresetPhoto];
     if ([self.session canAddInput:input]) {
         [self.session addInput:input];
     }
     
+    //创建输出流
+    AVCaptureMetadataOutput * output = [[AVCaptureMetadataOutput alloc]init];
+    __captureOutput = output;
+    [output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
     if ([self.session canAddOutput:output]) {
         
-        [output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
         [self.session addOutput:output];
     }
-    
     //设置扫码支持的编码格式
-    output.metadataObjectTypes = output.availableMetadataObjectTypes;
+    NSMutableArray *a = [[NSMutableArray alloc] init];
+    
+    if ([output.availableMetadataObjectTypes containsObject:AVMetadataObjectTypeQRCode]) {
+        [a addObject:AVMetadataObjectTypeQRCode];
+    }
+    if ([output.availableMetadataObjectTypes containsObject:AVMetadataObjectTypeEAN13Code]) {
+        [a addObject:AVMetadataObjectTypeEAN13Code];
+    }
+    if ([output.availableMetadataObjectTypes containsObject:AVMetadataObjectTypeEAN8Code]) {
+        [a addObject:AVMetadataObjectTypeEAN8Code];
+    }
+    if ([output.availableMetadataObjectTypes containsObject:AVMetadataObjectTypeCode128Code]) {
+        [a addObject:AVMetadataObjectTypeCode128Code];
+    }
+    
+    if ([output.availableMetadataObjectTypes containsObject:AVMetadataObjectTypeCode39Code]) {
+        [a addObject:AVMetadataObjectTypeCode39Code];
+    }
+    if ([output.availableMetadataObjectTypes containsObject:AVMetadataObjectTypeCode39Mod43Code]) {
+        [a addObject:AVMetadataObjectTypeCode39Mod43Code];
+    }
+    if ([output.availableMetadataObjectTypes containsObject:AVMetadataObjectTypeCode93Code]) {
+        [a addObject:AVMetadataObjectTypeCode93Code];
+    }
+    
+    output.metadataObjectTypes = a;
+    // 先将 output 添加到 session , 才能获取到有效的数据类型
+    //        output.metadataObjectTypes = output.availableMetadataObjectTypes;
+    
     
     AVCaptureVideoPreviewLayer * layer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
     layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
@@ -430,12 +457,15 @@ BOOL isiPad() {
 
 -(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
     
-    NSString *result = nil;
+    NSLog(@"Result: %@", metadataObjects);
+    NSMutableArray *results = [NSMutableArray arrayWithCapacity:metadataObjects.count];
     if (metadataObjects.count > 0) {
         
-        AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex : 0 ];
-        
-        result = metadataObject.stringValue;
+        for (AVMetadataMachineReadableCodeObject *obj in metadataObjects) {
+            LQRScanResult *res = [[LQRScanResult alloc]init];
+            res.result = obj.stringValue;
+            [results addObject:res];
+        }
         
     } else {
         if (self.maxScanCount > 0) {
@@ -448,10 +478,10 @@ BOOL isiPad() {
     
     __scanCount = 0;
     [self stopScanning];
-    if (result) {
+    if (results.count > 0) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(scanView:didScanned:)]) {
             
-            [self.delegate scanView:self didScanned:result];
+            [self.delegate scanView:self didScanned:results];
         }
     } else {
         if (self.delegate && [self.delegate respondsToSelector:@selector(scanViewScanFailed:)]) {
@@ -658,6 +688,9 @@ BOOL isiPad() {
 
 #pragma mark - 转换有效扫描区域坐标
 - (void) configInterest {
+//    [self coverInterest];
+//    return;
+    
     
     UIInterfaceOrientation deviceOr = [UIApplication sharedApplication].statusBarOrientation;
     CGRect r = CGRectZero;
@@ -668,7 +701,7 @@ BOOL isiPad() {
     } else if (deviceOr == UIInterfaceOrientationLandscapeLeft) {
         r = [self configInterestLandscapeLeftOfCropRect:self.scanArea previewLayer:__previewLayer sessionPreset:self.session.sessionPreset output:__captureOutput];
     } else if (deviceOr == UIInterfaceOrientationPortraitUpsideDown) {
-        [self setInterestPortraitUpsideDown];
+        r = [self configInterestPortaitUpsideDownOfCropRect:self.scanArea previewLayer:__previewLayer sessionPreset:self.session.sessionPreset output:__captureOutput];
     }
     
     NSLog(@"==========================\n %@ \n ===================", NSStringFromCGRect(r));
@@ -713,7 +746,7 @@ BOOL isiPad() {
     
     if ([previewLayer.videoGravity isEqualToString:AVLayerVideoGravityResize]) {
         r.origin.x = (size.width - CGRectGetMaxX(cropRect))/size.width;
-        r.origin.y = CGRectGetMinY(cropRect)/size.height;
+        r.origin.y = (size.height - CGRectGetMaxY(cropRect))/size.height;
         r.size.width = cropRect.size.width/size.width ;
         r.size.height = cropRect.size.height/size.height ;
     } else if ([previewLayer.videoGravity isEqualToString:AVLayerVideoGravityResizeAspectFill]) {
@@ -722,8 +755,8 @@ BOOL isiPad() {
             CGFloat width = size.height / p2;
             CGFloat padding = (width - size.width)/2;
             
-            r.origin.x = (width - CGRectGetMaxX(cropRect) - padding)/width ;
-            r.origin.y = (CGRectGetMinY(cropRect))/size.height ;
+            r.origin.x = (size.width - CGRectGetMaxX(cropRect) + padding)/width ;
+            r.origin.y = (size.height - CGRectGetMaxY(cropRect))/size.height ;
             r.size.width = cropRect.size.width/width ;
             r.size.height = cropRect.size.height/size.height ;
         } else {
@@ -732,9 +765,9 @@ BOOL isiPad() {
             CGFloat padding = (height - size.height) / 2.0;
             
             r.origin.x = (size.width - CGRectGetMaxX(cropRect))/size.width;
-            r.origin.y = (height - CGRectGetMaxY(cropRect) - padding)/height;
-            r.size.width = cropRect.size.width/height ;
-            r.size.height = cropRect.size.height/size.height ;
+            r.origin.y = (size.height - CGRectGetMaxY(cropRect) + padding)/height;
+            r.size.width = cropRect.size.width/size.width ;
+            r.size.height = cropRect.size.height/height ;
         }
     } else if ([previewLayer.videoGravity isEqualToString:AVLayerVideoGravityResizeAspect]) {
         if (p1 > p2) {
@@ -743,15 +776,15 @@ BOOL isiPad() {
             CGFloat padding = (size.height - height)/2;
             
             r.origin.x = (size.width - CGRectGetMaxX(cropRect))/size.width ;
-            r.origin.y = (CGRectGetMinY(cropRect) + padding)/height ;
+            r.origin.y = (size.height - CGRectGetMaxY(cropRect) - padding)/height ;
             r.size.width =  cropRect.size.width/size.width ;
             r.size.height = cropRect.size.height/height ;
         } else {
             CGFloat width = size.height / p2;
-            CGFloat fixPadding = (size.width - width)/2.;
+            CGFloat padding = (size.width - width)/2.;
             
-            r.origin.x = (size.width - CGRectGetMaxX(cropRect) - fixPadding)/width ;
-            r.origin.y =  cropRect.origin.y/size.height ;
+            r.origin.x = (size.width - CGRectGetMaxX(cropRect) - padding)/width ;
+            r.origin.y =  (size.height - CGRectGetMaxY(cropRect))/size.height ;
             r.size.width = cropRect.size.width/width ;
             r.size.height = cropRect.size.height/size.height ;
         }
@@ -797,8 +830,8 @@ BOOL isiPad() {
     CGRect r = CGRectMake(0, 0, 1., 1.);
     
     if ([previewLayer.videoGravity isEqualToString:AVLayerVideoGravityResize]) {
-        r.origin.x = (cropRect.origin.x)/size.width;
-        r.origin.y = (size.height - CGRectGetMaxY(cropRect))/size.height;
+        r.origin.x = (CGRectGetMinX(cropRect))/size.width;
+        r.origin.y = (CGRectGetMinY(cropRect))/size.height;
         r.size.width = cropRect.size.width/size.width ;
         r.size.height = cropRect.size.height/size.height;
     } else if ([previewLayer.videoGravity isEqualToString:AVLayerVideoGravityResizeAspectFill]) {
@@ -807,8 +840,8 @@ BOOL isiPad() {
             CGFloat width = size.height / p2;
             CGFloat padding = (width - size.width) / 2.0;
             
-            r.origin.x = (cropRect.origin.x + padding)/width ;
-            r.origin.y = (size.height - CGRectGetMaxY(cropRect))/size.height ;
+            r.origin.x = (CGRectGetMinX(cropRect) + padding)/width ;
+            r.origin.y = (CGRectGetMinY(cropRect))/size.height ;
             r.size.width = cropRect.size.width/width ;
             r.size.height = cropRect.size.height/size.height ;
         } else {
@@ -816,7 +849,7 @@ BOOL isiPad() {
             CGFloat padding = (height  - size.height) / 2.0;
             
             r.origin.x = CGRectGetMinX(cropRect) / size.width;
-            r.origin.y = (size.height - CGRectGetMaxY(cropRect) + padding) / height;
+            r.origin.y = (CGRectGetMinY(cropRect) + padding) / height;
             r.size.width = CGRectGetWidth(cropRect) / size.width;
             r.size.height = CGRectGetHeight(cropRect) / height;
         }
@@ -826,7 +859,7 @@ BOOL isiPad() {
             CGFloat padding = (size.height - height)/2.0;
             
             r.origin.x = CGRectGetMinX(cropRect)/size.width ;
-            r.origin.y = (size.height - CGRectGetMaxY(cropRect) - padding)/ height ;
+            r.origin.y = (CGRectGetMinY(cropRect) - padding)/ height ;
             r.size.width = cropRect.size.width/size.width ;
             r.size.height =  cropRect.size.height/height ;
         } else {
@@ -834,7 +867,7 @@ BOOL isiPad() {
             CGFloat padding = (size.width - width)/2.;
             
             r.origin.x = (CGRectGetMinX(cropRect) - padding)/width ;
-            r.origin.y = (size.height - CGRectGetMaxY(cropRect))/size.height ;
+            r.origin.y = (CGRectGetMinY(cropRect))/size.height ;
             r.size.width = cropRect.size.width/width ;
             r.size.height = cropRect.size.height/size.height ;
         }
@@ -883,7 +916,7 @@ BOOL isiPad() {
     if ([previewLayer.videoGravity isEqualToString:AVLayerVideoGravityResize]) {
         
         r.origin.x = (cropRect.origin.y)/size.height;
-        r.origin.y = (CGRectGetMinX(cropRect))/size.width;
+        r.origin.y = (size.width - CGRectGetMaxX(cropRect))/size.width;
         r.size.width = cropRect.size.height/size.height;
         r.size.height = cropRect.size.width/size.width;
     } else if ([previewLayer.videoGravity isEqualToString:AVLayerVideoGravityResizeAspectFill]) {
@@ -892,16 +925,16 @@ BOOL isiPad() {
             CGFloat height = size.width * p2;
             CGFloat padding = (height - size.height)/2.;
             
-            r.origin.x = (cropRect.origin.y + padding)/height ;
-            r.origin.y = cropRect.origin.x/size.width ;
+            r.origin.x = (CGRectGetMinY(cropRect) + padding)/height ;
+            r.origin.y = (size.width - CGRectGetMaxX(cropRect))/size.width ;
             r.size.width = cropRect.size.height/height ;
             r.size.height = cropRect.size.width/size.width ;
         } else {
             CGFloat width = size.height / p2;
             CGFloat padding = (width - size.width)/2.;
             
-            r.origin.x = cropRect.origin.y/size.height ;
-            r.origin.y = (cropRect.origin.x + padding)/width;
+            r.origin.x = CGRectGetMinY(cropRect)/size.height ;
+            r.origin.y = (size.width - CGRectGetMaxX(cropRect) + padding)/width;
             r.size.width = cropRect.size.height/size.height ;
             r.size.height = cropRect.size.width/width ;
         }
@@ -910,16 +943,16 @@ BOOL isiPad() {
             CGFloat height = size.width * p2;
             CGFloat padding = (size.height - height)/2.0;
             
-            r.origin.x = (cropRect.origin.y - padding)/height ;
-            r.origin.y = (CGRectGetMinX(cropRect))/size.width ;
+            r.origin.x = (CGRectGetMinY(cropRect) - padding)/height ;
+            r.origin.y = (size.width - CGRectGetMaxX(cropRect))/size.width ;
             r.size.width = cropRect.size.height/height ;
             r.size.height = cropRect.size.width/size.width ;
         } else {
             CGFloat width = size.height * (1./p2);
             CGFloat padding = (size.width - width)/2;
             
-            r.origin.x = cropRect.origin.y/size.height ;
-            r.origin.y = (CGRectGetMinX(cropRect) - padding)/width ;
+            r.origin.x = CGRectGetMinY(cropRect)/size.height ;
+            r.origin.y = (size.width - CGRectGetMaxX(cropRect) - padding)/width ;
             r.size.width = cropRect.size.height/size.height ;
             r.size.height = cropRect.size.width/width ;
         }
@@ -929,27 +962,29 @@ BOOL isiPad() {
     return r;
 }
 
-- (void) setInterestPortraitUpsideDown {
+- (CGRect) configInterestPortaitUpsideDownOfCropRect:(CGRect) cropRect
+                                        previewLayer:(AVCaptureVideoPreviewLayer *) previewLayer
+                                       sessionPreset:(AVCaptureSessionPreset)sessionPreset
+                                              output:(AVCaptureMetadataOutput*)output {
     
-    CGRect cropRect = self.scanArea;
-    CGSize size = __previewLayer.bounds.size;
+    CGSize size = previewLayer.bounds.size;
     CGFloat p1 = size.height/size.width;
     CGFloat p2 = 0.0;
     
-    if ([_session.sessionPreset isEqualToString:AVCaptureSessionPreset1920x1080]) {
+    if ([sessionPreset isEqualToString:AVCaptureSessionPreset1920x1080]) {
         p2 = 1920./1080.;
     }
-    else if ([_session.sessionPreset isEqualToString:AVCaptureSessionPresetHigh]) {
+    else if ([sessionPreset isEqualToString:AVCaptureSessionPresetHigh]) {
         p2 = 1920./1080.;
     }
-    else if ([_session.sessionPreset isEqualToString:AVCaptureSessionPresetPhoto]) { // 暂时未查到具体分辨率，但是可以推导出分辨率的比例为4/3
-        p2 = 4./3.;
+    else if ([sessionPreset isEqualToString:AVCaptureSessionPresetPhoto]) {
+        p2 = 852./640.;
     }
-    else if ([_session.sessionPreset isEqualToString:AVCaptureSessionPresetInputPriority]) {
+    else if ([sessionPreset isEqualToString:AVCaptureSessionPresetInputPriority]) {
         p2 = 1920./1080.;
     }
     else if (@available(iOS 9.0, *)) {
-        if ([_session.sessionPreset isEqualToString:AVCaptureSessionPreset3840x2160]) {
+        if ([sessionPreset isEqualToString:AVCaptureSessionPreset3840x2160]) {
             p2 = 3840./2160.;
         }
     } else {
@@ -958,52 +993,53 @@ BOOL isiPad() {
     
     CGRect r = CGRectMake(0, 0, 1., 1.);
     
-    if ([__previewLayer.videoGravity isEqualToString:AVLayerVideoGravityResize]) {
-        r.origin.x = (cropRect.origin.y)/size.height;
-        r.origin.y = (size.width-(cropRect.size.width+cropRect.origin.x))/size.width;
+    if ([previewLayer.videoGravity isEqualToString:AVLayerVideoGravityResize]) {
+        
+        r.origin.x = (size.height - CGRectGetMaxY(cropRect))/size.height;
+        r.origin.y = (CGRectGetMinX(cropRect))/size.width;
         r.size.width = cropRect.size.height/size.height;
         r.size.height = cropRect.size.width/size.width;
-    } else if ([__previewLayer.videoGravity isEqualToString:AVLayerVideoGravityResizeAspectFill]) {
+    } else if ([previewLayer.videoGravity isEqualToString:AVLayerVideoGravityResizeAspectFill]) {
+        
         if (p1 < p2) {
-            CGFloat fixHeight = size.width * p2;
-            CGFloat fixPadding = (fixHeight - size.height)/2;
+            CGFloat height = size.width * p2;
+            CGFloat padding = (height - size.height)/2.;
             
-            r.origin.x = 1.0 - (cropRect.origin.y + fixPadding)/fixHeight ;
-            r.origin.y = 1.0 -  (size.width-(cropRect.size.width+cropRect.origin.x))/size.width ;
-            r.size.width = cropRect.size.height/fixHeight ;
-            r.size.height = cropRect.size.width/size.width ;
-            
+            r.origin.x = (size.height - CGRectGetMaxY(cropRect) + padding)/height;
+            r.origin.y = (CGRectGetMinX(cropRect))/size.width;
+            r.size.width = cropRect.size.height/height;
+            r.size.height = cropRect.size.width/size.width;
         } else {
-            CGFloat fixWidth = size.height * (1/p2);
-            CGFloat fixPadding = (fixWidth - size.width)/2;
+            CGFloat width = size.height / p2;
+            CGFloat padding = (width - size.width)/2.;
             
-            r.origin.x = cropRect.origin.y/size.height ;
-            r.origin.y = (size.width-(cropRect.size.width+cropRect.origin.x)+fixPadding)/fixWidth ;
-            r.size.width = cropRect.size.height/size.height ;
-            r.size.height = cropRect.size.width/fixWidth ;
+            r.origin.x = (size.height - CGRectGetMaxY(cropRect))/size.height;
+            r.origin.y = (CGRectGetMinX(cropRect) + padding)/width;
+            r.size.width = cropRect.size.height/size.height;
+            r.size.height = cropRect.size.width/width;
         }
-    } else if ([__previewLayer.videoGravity isEqualToString:AVLayerVideoGravityResizeAspect]) {
+    } else if ([previewLayer.videoGravity isEqualToString:AVLayerVideoGravityResizeAspect]) {
         if (p1 > p2) {
-            CGFloat fixHeight = size.width * p2;
-            CGFloat fixPadding = (fixHeight - size.height)/2;
+            CGFloat height = size.width * p2;
+            CGFloat padding = (size.height - height)/2.0;
             
-            r.origin.x = (cropRect.origin.y + fixPadding)/fixHeight ;
-            r.origin.y = (size.width-(cropRect.size.width+cropRect.origin.x))/size.width ;
-            r.size.width = cropRect.size.height/fixHeight ;
-            r.size.height = cropRect.size.width/size.width ;
+            r.origin.x = (size.height - CGRectGetMaxY(cropRect) - padding)/height;
+            r.origin.y = (CGRectGetMinX(cropRect))/size.width;
+            r.size.width = cropRect.size.height/height;
+            r.size.height = cropRect.size.width/size.width;
         } else {
-            CGFloat fixWidth = size.height * (1/p2);
-            CGFloat fixPadding = (fixWidth - size.width)/2;
+            CGFloat width = size.height * (1./p2);
+            CGFloat padding = (size.width - width)/2;
             
-            r.origin.x = cropRect.origin.y/size.height ;
-            r.origin.y = (size.width-(cropRect.size.width+cropRect.origin.x)+fixPadding)/fixWidth ;
+            r.origin.x = CGRectGetMinY(cropRect)/size.height ;
+            r.origin.y = (CGRectGetMinX(cropRect) - padding)/width ;
             r.size.width = cropRect.size.height/size.height ;
-            r.size.height = cropRect.size.width/fixWidth ;
+            r.size.height = cropRect.size.width/width ;
         }
     }
     
-    
-    __captureOutput.rectOfInterest = r;
+    output.rectOfInterest = r;
+    return r;
 }
 
 // https://www.jianshu.com/p/8bb3d8cb224e
@@ -1090,3 +1126,5 @@ BOOL isiPad() {
 @end
 
 
+@implementation LQRScanResult
+@end

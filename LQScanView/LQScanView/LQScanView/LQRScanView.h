@@ -12,16 +12,17 @@
 #import <UIKit/UIKit.h>
 
 @class LQRScanView;
+@class LQRScanResult;
 @protocol LQRScanViewDelegate <NSObject>
 
 /**
  扫描成功的回调
 
  @param scan 当前视图
- @param info 扫描信息
+ @param results 扫描信息
  */
 - (void)scanView:(LQRScanView *_Nonnull)scan
-      didScanned:(NSString *_Nullable)info;
+      didScanned:(NSArray<LQRScanResult *> * _Nullable)results;
 @optional
 
 /**
@@ -136,4 +137,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)isCameraEnable ;
 @end
 
+@interface LQRScanResult : NSObject
+
+@property (nonatomic, copy) NSString * result ;
+@end
 NS_ASSUME_NONNULL_END

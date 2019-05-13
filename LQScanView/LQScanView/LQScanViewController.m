@@ -197,12 +197,12 @@
     self.lightButton.bounds = CGRectMake(0, 0, 100, 100);
     self.lightButton.center = self.view.center;
 }
-
-- (void)scanView:(LQRScanView *)scan didScanned:(NSString *)info {
+-(void)scanView:(LQRScanView *)scan didScanned:(NSArray<LQRScanResult *> *)results {
+    LQRScanResult *res = [results firstObject];
     
     [self backButtonAction];
     if (self.completeHandler) {
-        self.completeHandler(info);
+        self.completeHandler(res.result);
     }
 }
 
