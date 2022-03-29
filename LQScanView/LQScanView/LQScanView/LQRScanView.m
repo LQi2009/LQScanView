@@ -127,55 +127,55 @@ BOOL isiPad() {
 
 - (void) autoFocusScanCenter {
     
-    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    if ([device isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
-        NSError *error ;
-        if ([device lockForConfiguration:&error]) {
-            [device setFocusMode:AVCaptureFocusModeAutoFocus];
-            if (device.focusPointOfInterestSupported) {
-                CGFloat x = CGRectGetMinX(__captureOutput.rectOfInterest);
-                CGFloat y = CGRectGetMinY(__captureOutput.rectOfInterest);
-                device.focusPointOfInterest = CGPointMake(x, y);
-            }
-        }
-        
-        [device unlockForConfiguration];
-    }
+//    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+//    if ([device isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
+//        NSError *error ;
+//        if ([device lockForConfiguration:&error]) {
+//            [device setFocusMode:AVCaptureFocusModeAutoFocus];
+//            if (device.focusPointOfInterestSupported) {
+//                CGFloat x = CGRectGetMinX(__captureOutput.rectOfInterest);
+//                CGFloat y = CGRectGetMinY(__captureOutput.rectOfInterest);
+//                device.focusPointOfInterest = CGPointMake(x, y);
+//            }
+//        }
+//
+//        [device unlockForConfiguration];
+//    }
 }
 #pragma mark -
 + (void)turnTorch:(BOOL) on {
     
-    Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
-    if (captureDeviceClass != nil) {
-        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-        
-        if ([device hasTorch] && [device hasFlash]){
-            
-            [device lockForConfiguration:nil];
-            if (on) {
-                
-//                [device setTorchMode:AVCaptureTorchModeOn];
-                if (@available(iOS 10.0, *)) {
-                    AVCapturePhotoSettings *set = [AVCapturePhotoSettings photoSettings];
-                    set.flashMode = AVCaptureFlashModeOn;
-                } else {
-                    // Fallback on earlier versions
-                    [device setFlashMode:AVCaptureFlashModeOn];
-                }
-            } else {
-//                [device setTorchMode:AVCaptureTorchModeOff];
-
-                if (@available(iOS 10.0, *)) {
-                    AVCapturePhotoSettings *set = [AVCapturePhotoSettings photoSettings];
-                    set.flashMode = AVCaptureFlashModeOff;
-                } else {
-                    // Fallback on earlier versions
-                    [device setFlashMode:AVCaptureFlashModeOff];
-                }
-            }
-            [device unlockForConfiguration];
-        }
-    }
+//    Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
+//    if (captureDeviceClass != nil) {
+//        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+//
+//        if ([device hasTorch] && [device hasFlash]){
+//
+//            [device lockForConfiguration:nil];
+//            if (on) {
+//
+////                [device setTorchMode:AVCaptureTorchModeOn];
+//                if (@available(iOS 10.0, *)) {
+//                    AVCapturePhotoSettings *set = [AVCapturePhotoSettings photoSettings];
+//                    set.flashMode = AVCaptureFlashModeOn;
+//                } else {
+//                    // Fallback on earlier versions
+//                    [device setFlashMode:AVCaptureFlashModeOn];
+//                }
+//            } else {
+////                [device setTorchMode:AVCaptureTorchModeOff];
+//
+//                if (@available(iOS 10.0, *)) {
+//                    AVCapturePhotoSettings *set = [AVCapturePhotoSettings photoSettings];
+//                    set.flashMode = AVCaptureFlashModeOff;
+//                } else {
+//                    // Fallback on earlier versions
+//                    [device setFlashMode:AVCaptureFlashModeOff];
+//                }
+//            }
+//            [device unlockForConfiguration];
+//        }
+//    }
 }
 
 + (BOOL)isCameraEnable {
@@ -210,20 +210,20 @@ BOOL isiPad() {
 
 - (void) removeObservers {
     
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
-    [self.session removeObserver:self forKeyPath:@"running"];
+//    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+//    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+//    [self.session removeObserver:self forKeyPath:@"running"];
 }
 
 - (void) observerSelectors:(NSNotification *) noti {
-    if (noti.name == UIApplicationDidEnterBackgroundNotification) {
-        [self stopScanning];
-    } else if (noti.name == UIApplicationWillEnterForegroundNotification) {
-        [self startScanning];
-    } else if (noti.name == AVCaptureInputPortFormatDescriptionDidChangeNotification) {
-        //设置有效扫描区域
-        __captureOutput.rectOfInterest = [__previewLayer metadataOutputRectOfInterestForRect:self.scanArea];
-    }
+//    if (noti.name == UIApplicationDidEnterBackgroundNotification) {
+//        [self stopScanning];
+//    } else if (noti.name == UIApplicationWillEnterForegroundNotification) {
+//        [self startScanning];
+//    } else if (noti.name == AVCaptureInputPortFormatDescriptionDidChangeNotification) {
+//        //设置有效扫描区域
+//        __captureOutput.rectOfInterest = [__previewLayer metadataOutputRectOfInterestForRect:self.scanArea];
+//    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -231,22 +231,22 @@ BOOL isiPad() {
                         change:(NSDictionary *)change
                        context:(void *)context{
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        if ([object isKindOfClass:[AVCaptureSession class]]) {
-            
-            if ([keyPath isEqualToString:@"running"]) {
-                BOOL isRunning = ((AVCaptureSession *)object).isRunning;
-                if (isRunning) {
-                    
-                    [self startAnimate];
-                }else{
-                    [self stopAnimate];
-                }
-            }
-            
-        }
-    });
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//
+//        if ([object isKindOfClass:[AVCaptureSession class]]) {
+//
+//            if ([keyPath isEqualToString:@"running"]) {
+//                BOOL isRunning = ((AVCaptureSession *)object).isRunning;
+//                if (isRunning) {
+//
+//                    [self startAnimate];
+//                }else{
+//                    [self stopAnimate];
+//                }
+//            }
+//
+//        }
+//    });
 }
 #pragma mark -
 - (void) prepare {
