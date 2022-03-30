@@ -14,10 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LQRScanner : NSObject
 
 @property (nonatomic, assign) BOOL lightDetectionEnable ;
+@property (nonatomic, assign) NSInteger maxScanCount ;
 @property (nonatomic) CGRect scanArea ;
+@property (nonatomic) CGRect frame ;
 @property (nonatomic, weak) id<LQRScannerDelegate> delegate ;
+@property (nonatomic, strong) UIView *view;
 
-- (void) startScanningWithCompleteHandler:(void(^)(void)) handler ;
+- (void) startScanAsyncWithCompleteHandler:(void(^)(void)) handler ;
 - (void) stopScanning ;
 
 - (void) autoFocusScanCenter ;
@@ -25,15 +28,25 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)isCameraEnable ;
 @end
 
+@class LQRScanResult;
 @protocol LQRScannerDelegate <NSObject>
 
 - (void) scannerWillStartScanning:(LQRScanner *) scanner ;
 - (void) scannerDidStartScanning:(LQRScanner *) scanner ;
-- (void) scannerIsScanning:(LQRScanner *) scanner ;
-- (void) scannerStopScanning:(LQRScanner *) scanner ;
+
+- (void) scanner:(LQRScanner *) scanner didScanned:(NSArray<LQRScanResult *> *) results;
+- (void) scanner:(LQRScanner *_Nonnull)scanner
+    lightChanged:(CGFloat) value;
+- (void) scannerCamaraDisable:(LQRScanner *_Nonnull)scanner;
+- (void) scannerScanFailed:(LQRScanner *_Nonnull)scanner;
+
 - (void) scannerDidEnterBackground:(LQRScanner *) scanner ;
 - (void) scannerWillEnterForeground:(LQRScanner *) scanner ;
 
 @end
 
+@interface LQRScanResult : NSObject
+
+@property (nonatomic, copy) NSString * result ;
+@end
 NS_ASSUME_NONNULL_END
