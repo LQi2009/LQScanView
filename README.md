@@ -1,5 +1,7 @@
 ### 根据此OC版本,改写了一个Swift版本的[LZScanner_swift](https://github.com/LQQZYY/LZScanner_swift),欢迎star
 
+>该版本中二维码扫描和UI是耦合的，如果只需要二维码扫描的功能，需要自定义UI，可以参考[LQScanner](https://gitee.com/qrice/LQScanView)
+
 ## 简介
 
 主要文件有以下两个:
