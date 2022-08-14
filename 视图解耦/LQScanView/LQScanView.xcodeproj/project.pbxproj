@@ -1,0 +1,696 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0DD081E627F5B034007276D6 /* RBScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD081E527F5B034007276D6 /* RBScanView.m */; };
+		0DD081E927F5B2EA007276D6 /* RBScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD081E827F5B2EA007276D6 /* RBScanViewController.m */; };
+		3D11B4BD27F3486300BCD762 /* LQRScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D11B4BC27F3486300BCD762 /* LQRScanner.m */; };
+		3DA786CC282FE50B00749669 /* LQCamaraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA786CB282FE50B00749669 /* LQCamaraViewController.m */; };
+		D264F2302267234500C44C49 /* UIImageView+LongPress.m in Sources */ = {isa = PBXBuildFile; fileRef = D264F22E2267234500C44C49 /* UIImageView+LongPress.m */; };
+		D264F23522687C6900C44C49 /* LQRCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D264F23422687C6900C44C49 /* LQRCoder.m */; };
+		D264F23822688BF900C44C49 /* qrcoder_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D264F23622688BF800C44C49 /* qrcoder_back@3x.png */; };
+		D264F23922688BF900C44C49 /* qrcoder_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D264F23722688BF800C44C49 /* qrcoder_back@2x.png */; };
+		D264F23E22696A1A00C44C49 /* light_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D264F23A22696A1900C44C49 /* light_close@2x.png */; };
+		D264F23F22696A1A00C44C49 /* light_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D264F23B22696A1900C44C49 /* light_close@3x.png */; };
+		D264F24022696A1A00C44C49 /* light_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D264F23C22696A1A00C44C49 /* light_open@2x.png */; };
+		D264F24122696A1A00C44C49 /* light_open@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D264F23D22696A1A00C44C49 /* light_open@3x.png */; };
+		D27342FD2276D418008E0B96 /* LQCamara.m in Sources */ = {isa = PBXBuildFile; fileRef = D27342FC2276D418008E0B96 /* LQCamara.m */; };
+		D2BA679522643AA30066409C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA679422643AA30066409C /* AppDelegate.m */; };
+		D2BA679822643AA30066409C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA679722643AA30066409C /* ViewController.m */; };
+		D2BA679B22643AA30066409C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2BA679922643AA30066409C /* Main.storyboard */; };
+		D2BA679D22643AA30066409C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2BA679C22643AA30066409C /* Assets.xcassets */; };
+		D2BA67A022643AA30066409C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2BA679E22643AA30066409C /* LaunchScreen.storyboard */; };
+		D2BA67A322643AA30066409C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA67A222643AA30066409C /* main.m */; };
+		D2BA67AD22643AA40066409C /* LQScanViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA67AC22643AA40066409C /* LQScanViewTests.m */; };
+		D2BA67B822643AA40066409C /* LQScanViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA67B722643AA40066409C /* LQScanViewUITests.m */; };
+		D2BA67C822643CAF0066409C /* LQRScanOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA67C722643CAF0066409C /* LQRScanOverlayView.m */; };
+		D2BA67CA2264614C0066409C /* reader_scan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BA67C92264614C0066409C /* reader_scan@3x.png */; };
+		D2BA67CC22646E7B0066409C /* reader_scan_scanline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BA67CB22646E7B0066409C /* reader_scan_scanline.png */; };
+		D2BA67D3226579B70066409C /* reader_scan_scanCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BA67D2226579B70066409C /* reader_scan_scanCamera@2x.png */; };
+		D2BA67D62265BE960066409C /* LQScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA67D52265BE960066409C /* LQScanViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D2BA67A922643AA40066409C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2BA678822643AA30066409C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2BA678F22643AA30066409C;
+			remoteInfo = LQScanView;
+		};
+		D2BA67B422643AA40066409C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2BA678822643AA30066409C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2BA678F22643AA30066409C;
+			remoteInfo = LQScanView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0DD081E427F5B034007276D6 /* RBScanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBScanView.h; sourceTree = "<group>"; };
+		0DD081E527F5B034007276D6 /* RBScanView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBScanView.m; sourceTree = "<group>"; };
+		0DD081E727F5B2EA007276D6 /* RBScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBScanViewController.h; sourceTree = "<group>"; };
+		0DD081E827F5B2EA007276D6 /* RBScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBScanViewController.m; sourceTree = "<group>"; };
+		3D11B4BB27F3486300BCD762 /* LQRScanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQRScanner.h; sourceTree = "<group>"; };
+		3D11B4BC27F3486300BCD762 /* LQRScanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQRScanner.m; sourceTree = "<group>"; };
+		3DA786CA282FE50B00749669 /* LQCamaraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQCamaraViewController.h; sourceTree = "<group>"; };
+		3DA786CB282FE50B00749669 /* LQCamaraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQCamaraViewController.m; sourceTree = "<group>"; };
+		D264F22E2267234500C44C49 /* UIImageView+LongPress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LongPress.m"; sourceTree = "<group>"; };
+		D264F22F2267234500C44C49 /* UIImageView+LongPress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LongPress.h"; sourceTree = "<group>"; };
+		D264F23322687C6900C44C49 /* LQRCoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQRCoder.h; sourceTree = "<group>"; };
+		D264F23422687C6900C44C49 /* LQRCoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQRCoder.m; sourceTree = "<group>"; };
+		D264F23622688BF800C44C49 /* qrcoder_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qrcoder_back@3x.png"; sourceTree = "<group>"; };
+		D264F23722688BF800C44C49 /* qrcoder_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qrcoder_back@2x.png"; sourceTree = "<group>"; };
+		D264F23A22696A1900C44C49 /* light_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light_close@2x.png"; sourceTree = "<group>"; };
+		D264F23B22696A1900C44C49 /* light_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light_close@3x.png"; sourceTree = "<group>"; };
+		D264F23C22696A1A00C44C49 /* light_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light_open@2x.png"; sourceTree = "<group>"; };
+		D264F23D22696A1A00C44C49 /* light_open@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light_open@3x.png"; sourceTree = "<group>"; };
+		D27342FB2276D418008E0B96 /* LQCamara.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQCamara.h; sourceTree = "<group>"; };
+		D27342FC2276D418008E0B96 /* LQCamara.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQCamara.m; sourceTree = "<group>"; };
+		D2BA679022643AA30066409C /* LQScanView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LQScanView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2BA679322643AA30066409C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D2BA679422643AA30066409C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D2BA679622643AA30066409C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D2BA679722643AA30066409C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D2BA679A22643AA30066409C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D2BA679C22643AA30066409C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D2BA679F22643AA30066409C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D2BA67A122643AA30066409C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2BA67A222643AA30066409C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D2BA67A822643AA40066409C /* LQScanViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LQScanViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2BA67AC22643AA40066409C /* LQScanViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQScanViewTests.m; sourceTree = "<group>"; };
+		D2BA67AE22643AA40066409C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2BA67B322643AA40066409C /* LQScanViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LQScanViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2BA67B722643AA40066409C /* LQScanViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQScanViewUITests.m; sourceTree = "<group>"; };
+		D2BA67B922643AA40066409C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2BA67C622643CAF0066409C /* LQRScanOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQRScanOverlayView.h; sourceTree = "<group>"; };
+		D2BA67C722643CAF0066409C /* LQRScanOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQRScanOverlayView.m; sourceTree = "<group>"; };
+		D2BA67C92264614C0066409C /* reader_scan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_scan@3x.png"; sourceTree = "<group>"; };
+		D2BA67CB22646E7B0066409C /* reader_scan_scanline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reader_scan_scanline.png; sourceTree = "<group>"; };
+		D2BA67D2226579B70066409C /* reader_scan_scanCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_scan_scanCamera@2x.png"; sourceTree = "<group>"; };
+		D2BA67D42265BE960066409C /* LQScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LQScanViewController.h; sourceTree = "<group>"; };
+		D2BA67D52265BE960066409C /* LQScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LQScanViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2BA678D22643AA30066409C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2BA67A522643AA40066409C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2BA67B022643AA40066409C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D27342FA2276D3FB008E0B96 /* LQCamara */ = {
+			isa = PBXGroup;
+			children = (
+				D27342FB2276D418008E0B96 /* LQCamara.h */,
+				D27342FC2276D418008E0B96 /* LQCamara.m */,
+			);
+			path = LQCamara;
+			sourceTree = "<group>";
+		};
+		D2BA678722643AA30066409C = {
+			isa = PBXGroup;
+			children = (
+				D2BA679222643AA30066409C /* LQScanView */,
+				D2BA67AB22643AA40066409C /* LQScanViewTests */,
+				D2BA67B622643AA40066409C /* LQScanViewUITests */,
+				D2BA679122643AA30066409C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D2BA679122643AA30066409C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2BA679022643AA30066409C /* LQScanView.app */,
+				D2BA67A822643AA40066409C /* LQScanViewTests.xctest */,
+				D2BA67B322643AA40066409C /* LQScanViewUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D2BA679222643AA30066409C /* LQScanView */ = {
+			isa = PBXGroup;
+			children = (
+				D264F23A22696A1900C44C49 /* light_close@2x.png */,
+				D264F23B22696A1900C44C49 /* light_close@3x.png */,
+				D264F23C22696A1A00C44C49 /* light_open@2x.png */,
+				D264F23D22696A1A00C44C49 /* light_open@3x.png */,
+				D264F23722688BF800C44C49 /* qrcoder_back@2x.png */,
+				D264F23622688BF800C44C49 /* qrcoder_back@3x.png */,
+				D2BA67D2226579B70066409C /* reader_scan_scanCamera@2x.png */,
+				D2BA67C92264614C0066409C /* reader_scan@3x.png */,
+				D2BA67CB22646E7B0066409C /* reader_scan_scanline.png */,
+				D27342FA2276D3FB008E0B96 /* LQCamara */,
+				D2BA67C522643C8D0066409C /* LQScanView */,
+				D2BA679322643AA30066409C /* AppDelegate.h */,
+				D2BA679422643AA30066409C /* AppDelegate.m */,
+				D2BA679622643AA30066409C /* ViewController.h */,
+				D2BA679722643AA30066409C /* ViewController.m */,
+				D2BA67D42265BE960066409C /* LQScanViewController.h */,
+				D2BA67D52265BE960066409C /* LQScanViewController.m */,
+				0DD081E727F5B2EA007276D6 /* RBScanViewController.h */,
+				0DD081E827F5B2EA007276D6 /* RBScanViewController.m */,
+				3DA786CA282FE50B00749669 /* LQCamaraViewController.h */,
+				3DA786CB282FE50B00749669 /* LQCamaraViewController.m */,
+				D264F22F2267234500C44C49 /* UIImageView+LongPress.h */,
+				D264F22E2267234500C44C49 /* UIImageView+LongPress.m */,
+				D2BA679922643AA30066409C /* Main.storyboard */,
+				D2BA679C22643AA30066409C /* Assets.xcassets */,
+				D2BA679E22643AA30066409C /* LaunchScreen.storyboard */,
+				D2BA67A122643AA30066409C /* Info.plist */,
+				D2BA67A222643AA30066409C /* main.m */,
+			);
+			path = LQScanView;
+			sourceTree = "<group>";
+		};
+		D2BA67AB22643AA40066409C /* LQScanViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				D2BA67AC22643AA40066409C /* LQScanViewTests.m */,
+				D2BA67AE22643AA40066409C /* Info.plist */,
+			);
+			path = LQScanViewTests;
+			sourceTree = "<group>";
+		};
+		D2BA67B622643AA40066409C /* LQScanViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D2BA67B722643AA40066409C /* LQScanViewUITests.m */,
+				D2BA67B922643AA40066409C /* Info.plist */,
+			);
+			path = LQScanViewUITests;
+			sourceTree = "<group>";
+		};
+		D2BA67C522643C8D0066409C /* LQScanView */ = {
+			isa = PBXGroup;
+			children = (
+				D2BA67C622643CAF0066409C /* LQRScanOverlayView.h */,
+				D2BA67C722643CAF0066409C /* LQRScanOverlayView.m */,
+				3D11B4BB27F3486300BCD762 /* LQRScanner.h */,
+				3D11B4BC27F3486300BCD762 /* LQRScanner.m */,
+				D264F23322687C6900C44C49 /* LQRCoder.h */,
+				D264F23422687C6900C44C49 /* LQRCoder.m */,
+				0DD081E427F5B034007276D6 /* RBScanView.h */,
+				0DD081E527F5B034007276D6 /* RBScanView.m */,
+			);
+			path = LQScanView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D2BA678F22643AA30066409C /* LQScanView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2BA67BC22643AA40066409C /* Build configuration list for PBXNativeTarget "LQScanView" */;
+			buildPhases = (
+				D2BA678C22643AA30066409C /* Sources */,
+				D2BA678D22643AA30066409C /* Frameworks */,
+				D2BA678E22643AA30066409C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LQScanView;
+			productName = LQScanView;
+			productReference = D2BA679022643AA30066409C /* LQScanView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D2BA67A722643AA40066409C /* LQScanViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2BA67BF22643AA40066409C /* Build configuration list for PBXNativeTarget "LQScanViewTests" */;
+			buildPhases = (
+				D2BA67A422643AA40066409C /* Sources */,
+				D2BA67A522643AA40066409C /* Frameworks */,
+				D2BA67A622643AA40066409C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2BA67AA22643AA40066409C /* PBXTargetDependency */,
+			);
+			name = LQScanViewTests;
+			productName = LQScanViewTests;
+			productReference = D2BA67A822643AA40066409C /* LQScanViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D2BA67B222643AA40066409C /* LQScanViewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2BA67C222643AA40066409C /* Build configuration list for PBXNativeTarget "LQScanViewUITests" */;
+			buildPhases = (
+				D2BA67AF22643AA40066409C /* Sources */,
+				D2BA67B022643AA40066409C /* Frameworks */,
+				D2BA67B122643AA40066409C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2BA67B522643AA40066409C /* PBXTargetDependency */,
+			);
+			name = LQScanViewUITests;
+			productName = LQScanViewUITests;
+			productReference = D2BA67B322643AA40066409C /* LQScanViewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D2BA678822643AA30066409C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = Q.ice;
+				TargetAttributes = {
+					D2BA678F22643AA30066409C = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					D2BA67A722643AA40066409C = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = D2BA678F22643AA30066409C;
+					};
+					D2BA67B222643AA40066409C = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = D2BA678F22643AA30066409C;
+					};
+				};
+			};
+			buildConfigurationList = D2BA678B22643AA30066409C /* Build configuration list for PBXProject "LQScanView" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D2BA678722643AA30066409C;
+			productRefGroup = D2BA679122643AA30066409C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2BA678F22643AA30066409C /* LQScanView */,
+				D2BA67A722643AA40066409C /* LQScanViewTests */,
+				D2BA67B222643AA40066409C /* LQScanViewUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D2BA678E22643AA30066409C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2BA67CC22646E7B0066409C /* reader_scan_scanline.png in Resources */,
+				D2BA67A022643AA30066409C /* LaunchScreen.storyboard in Resources */,
+				D2BA679D22643AA30066409C /* Assets.xcassets in Resources */,
+				D264F24022696A1A00C44C49 /* light_open@2x.png in Resources */,
+				D2BA679B22643AA30066409C /* Main.storyboard in Resources */,
+				D2BA67D3226579B70066409C /* reader_scan_scanCamera@2x.png in Resources */,
+				D264F23922688BF900C44C49 /* qrcoder_back@2x.png in Resources */,
+				D264F23822688BF900C44C49 /* qrcoder_back@3x.png in Resources */,
+				D264F24122696A1A00C44C49 /* light_open@3x.png in Resources */,
+				D264F23F22696A1A00C44C49 /* light_close@3x.png in Resources */,
+				D2BA67CA2264614C0066409C /* reader_scan@3x.png in Resources */,
+				D264F23E22696A1A00C44C49 /* light_close@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2BA67A622643AA40066409C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2BA67B122643AA40066409C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2BA678C22643AA30066409C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DA786CC282FE50B00749669 /* LQCamaraViewController.m in Sources */,
+				D2BA67C822643CAF0066409C /* LQRScanOverlayView.m in Sources */,
+				D2BA679822643AA30066409C /* ViewController.m in Sources */,
+				0DD081E627F5B034007276D6 /* RBScanView.m in Sources */,
+				3D11B4BD27F3486300BCD762 /* LQRScanner.m in Sources */,
+				0DD081E927F5B2EA007276D6 /* RBScanViewController.m in Sources */,
+				D264F2302267234500C44C49 /* UIImageView+LongPress.m in Sources */,
+				D2BA67A322643AA30066409C /* main.m in Sources */,
+				D2BA67D62265BE960066409C /* LQScanViewController.m in Sources */,
+				D2BA679522643AA30066409C /* AppDelegate.m in Sources */,
+				D264F23522687C6900C44C49 /* LQRCoder.m in Sources */,
+				D27342FD2276D418008E0B96 /* LQCamara.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2BA67A422643AA40066409C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2BA67AD22643AA40066409C /* LQScanViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2BA67AF22643AA40066409C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2BA67B822643AA40066409C /* LQScanViewUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D2BA67AA22643AA40066409C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2BA678F22643AA30066409C /* LQScanView */;
+			targetProxy = D2BA67A922643AA40066409C /* PBXContainerItemProxy */;
+		};
+		D2BA67B522643AA40066409C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2BA678F22643AA30066409C /* LQScanView */;
+			targetProxy = D2BA67B422643AA40066409C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D2BA679922643AA30066409C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2BA679A22643AA30066409C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D2BA679E22643AA30066409C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2BA679F22643AA30066409C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D2BA67BA22643AA40066409C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D2BA67BB22643AA40066409C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D2BA67BD22643AA40066409C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 3FEA4VKGS4;
+				INFOPLIST_FILE = LQScanView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = .com.q.ice.LQScanView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = GMDevelop;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D2BA67BE22643AA40066409C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 3FEA4VKGS4;
+				INFOPLIST_FILE = LQScanView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = .com.q.ice.LQScanView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = GMDevelop;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D2BA67C022643AA40066409C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A7Z8D56N52;
+				INFOPLIST_FILE = LQScanViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.q.ice.LQScanViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LQScanView.app/LQScanView";
+			};
+			name = Debug;
+		};
+		D2BA67C122643AA40066409C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A7Z8D56N52;
+				INFOPLIST_FILE = LQScanViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.q.ice.LQScanViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LQScanView.app/LQScanView";
+			};
+			name = Release;
+		};
+		D2BA67C322643AA40066409C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A7Z8D56N52;
+				INFOPLIST_FILE = LQScanViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.q.ice.LQScanViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LQScanView;
+			};
+			name = Debug;
+		};
+		D2BA67C422643AA40066409C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A7Z8D56N52;
+				INFOPLIST_FILE = LQScanViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.q.ice.LQScanViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LQScanView;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D2BA678B22643AA30066409C /* Build configuration list for PBXProject "LQScanView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2BA67BA22643AA40066409C /* Debug */,
+				D2BA67BB22643AA40066409C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2BA67BC22643AA40066409C /* Build configuration list for PBXNativeTarget "LQScanView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2BA67BD22643AA40066409C /* Debug */,
+				D2BA67BE22643AA40066409C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2BA67BF22643AA40066409C /* Build configuration list for PBXNativeTarget "LQScanViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2BA67C022643AA40066409C /* Debug */,
+				D2BA67C122643AA40066409C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2BA67C222643AA40066409C /* Build configuration list for PBXNativeTarget "LQScanViewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2BA67C322643AA40066409C /* Debug */,
+				D2BA67C422643AA40066409C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D2BA678822643AA30066409C /* Project object */;
+}
